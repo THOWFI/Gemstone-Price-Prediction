@@ -108,34 +108,34 @@ GemstonePricePrediction/
 ## 🧩 Pipeline Workflow
 
 1. **Data Ingestion** (```bash data_ingestion.py```)         
-   - Reads dataset (```bash gemstone.csv```)          
-   - Splits into train/test sets               
-   - Stores CSVs in artifacts/             
+- Reads dataset (```bash gemstone.csv```)          
+- Splits into train/test sets               
+- Stores CSVs in artifacts/             
 
 2. **Data Transformation** (```bash data_transformation.py```)
-   - Handles missing values
-   - Encodes categorical variables (cut, color, clarity)
-   - Scales numerical features (carat, depth, table, etc.)
-   - Saves preprocessing object as preprocessor.pkl
+- Handles missing values
+- Encodes categorical variables (cut, color, clarity)
+- Scales numerical features (carat, depth, table, etc.)
+- Saves preprocessing object as preprocessor.pkl
 
 3. **Model Training** (```bash model_trainer.py```)
-   - Trains multiple regression models
-   - Uses GridSearchCV/RandomizedSearchCV for hyperparameter tuning
-   - Saves best model as model.pkl
+- Trains multiple regression models
+- Uses GridSearchCV/RandomizedSearchCV for hyperparameter tuning
+- Saves best model as model.pkl
 
 4. **Training Pipeline** (```bash train_pipeline.py```)
-   - Orchestrates full pipeline (ingestion → transformation → training)
+- Orchestrates full pipeline (ingestion → transformation → training)
 
 5. **Prediction Pipeline** (```bash predict_pipeline.py```)
-   - Loads model.pkl & preprocessor.pkl
-   - Accepts user input → preprocess → predict gemstone price
+- Loads model.pkl & preprocessor.pkl
+- Accepts user input → preprocess → predict gemstone price
 
 6. **Flask Application** (```bash application.py```)
-   - Web form for user input
-   - Displays predicted gemstone price in real-time
+- Web form for user input
+- Displays predicted gemstone price in real-time
 
 7. **Utilities**
-   - ```bash logger.py``` : Structured logging
-   - ```bash exception.py``` : Custom error handling
-   - ```bash utils.py``` : Model saving/loading, evaluation functions
+- ```bash logger.py``` : Structured logging
+- ```bash exception.py``` : Custom error handling
+- ```bash utils.py``` : Model saving/loading, evaluation functions
 
