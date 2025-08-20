@@ -1,88 +1,141 @@
-# Gemstone Price Prediction - Utkarsh Gaikwad
+# 💎 Gemstone Price Prediction
 
-### Introduction About the Data :
+An advanced **end-to-end Machine Learning project** that predicts gemstone prices based on their attributes.  
+This repository implements a **modular ML pipeline** with Flask integration for real-time predictions and production-ready deployment.
 
-Please this project is of a student. Just wanted to appreciate for knowledge sharing 
+---
 
-**The dataset** The goal is to predict `price` of given diamond (Regression Analysis).
+## 📌 Project Overview
 
-There are 10 independent variables (including `id`):
+Gemstone valuation depends on several measurable attributes such as:
 
-* `id` : unique identifier of each diamond
-* `carat` : Carat (ct.) refers to the unique unit of weight measurement used exclusively to weigh gemstones and diamonds.
-* `cut` : Quality of Diamond Cut
-* `color` : Color of Diamond
-* `clarity` : Diamond clarity is a measure of the purity and rarity of the stone, graded by the visibility of these characteristics under 10-power magnification.
-* `depth` : The depth of diamond is its height (in millimeters) measured from the culet (bottom tip) to the table (flat, top surface)
-* `table` : A diamond's table is the facet which can be seen when the stone is viewed face up.
-* `x` : Diamond X dimension
-* `y` : Diamond Y dimension
-* `x` : Diamond Z dimension
+- **Carat** (weight of the gemstone)  
+- **Cut** (quality of cut: Fair, Good, Very Good, Premium, Ideal)  
+- **Color** (graded from D–J)  
+- **Clarity** (from I1 to IF)  
+- **Depth & Table** proportions  
+- **Other measurable features**
 
-Target variable:
-* `price`: Price of the given Diamond.
+This project leverages **machine learning regression algorithms** to automate and improve gemstone price estimation.  
 
-Dataset Source Link :
-[https://www.kaggle.com/competitions/playground-series-s3e8/data?select=train.csv](https://www.kaggle.com/competitions/playground-series-s3e8/data?select=train.csv)
+The system includes:
+✅ Multiple regression algorithms (Linear Regression, Random Forest, XGBoost, CatBoost, etc.)  
+✅ **Modular ML pipelines** for ingestion, preprocessing, and training  
+✅ **Flask Web Application** for real-time predictions  
+✅ **Logging & Exception handling** for reliability  
+✅ **Deployment-ready** with setup scripts  
 
-### It is observed that the categorical variables 'cut', 'color' and 'clarity' are ordinal in nature
+---
 
-### Check this link for details : [American Gem Society](https://www.americangemsociety.org/ags-diamond-grading-system/)
+## 📊 Example
 
-# AWS Deployment Link :
+| Carat | Cut     | Color | Clarity | Depth | Table |
+|-------|---------|-------|---------|-------|-------|
+| 1.2   | Premium | E     | VS1     | 61.5  | 57    |
 
-AWS Elastic Beanstalk link : [http://gemstonepriceutkarshgaikwad-env.eba-7zp3wapg.ap-south-1.elasticbeanstalk.com/](http://gemstonepriceutkarshgaikwad-env.eba-7zp3wapg.ap-south-1.elasticbeanstalk.com/)
+✅ Output → Predicted Gemstone Price: **5,820**
 
-# Screenshot of UI
+---
 
-![HomepageUI](./Screenshots/HomepageUI.jpg)
+## 🚀 Features
 
-# YouTube Video Link
+- End-to-end **ML pipeline** (data ingestion → transformation → training → evaluation → prediction).  
+- Comparative analysis of multiple regression models.  
+- Hyperparameter tuning for optimized performance.  
+- **Flask-based web interface** for user interaction.  
+- **Artifacts management** (stores preprocessed data, trained models, logs).  
+- Modular and extensible codebase for research or production.  
 
-Link for YouTube Video : Click the below thumbnail to open 
+---
 
-[![https://youtu.be/Xvk5r0t_RQw](https://i.ytimg.com/vi/Xvk5r0t_RQw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBbp5SouquUm3Y3t-NYfOYsg4N4oQ)](https://youtu.be/Xvk5r0t_RQw)
+## 🛠️ Tech Stack
 
-# AWS API Link
+- **Python 3.11+**  
+- **Flask** – Web framework  
+- **Scikit-learn** – Preprocessing, training & evaluation  
+- **XGBoost / CatBoost** – Advanced regression models  
+- **Pandas & NumPy** – Data handling  
+- **Matplotlib / Seaborn** – Visualization (EDA)  
+- **Dill / Pickle** – Model serialization  
 
-API Link : [http://gemstonepriceutkarshgaikwad-env.eba-7zp3wapg.ap-south-1.elasticbeanstalk.com/predictAPI](http://gemstonepriceutkarshgaikwad-env.eba-7zp3wapg.ap-south-1.elasticbeanstalk.com/predictAPI)
+---
 
-# Postman Testing of API :
+## 📂 Project Structure
 
-![API Prediction](./Screenshots/APIPrediction.jpg)
+```bash
+GemstonePricePrediction/
+│── application.py              # Flask app entry point
+│── requirements.txt            # Python dependencies
+│── setup.py                    # Package setup
+│── .gitignore
+│── README.md                   # Project documentation
+│
+├── artifacts/                  # Generated artifacts
+│   ├── data.csv
+│   ├── train.csv
+│   ├── test.csv
+│   ├── model.pkl
+│   └── preprocessor.pkl
+│
+├── logs/                       # Log files
+│
+├── notebook/                   # Jupyter notebooks
+│   ├── data/gemstone.csv       # Raw dataset
+│   ├── 1_EDA_Gemstone_price.ipynb
+│   └── 2_Model_Training_Gemstone.ipynb
+│
+├── src/                        # Core ML source code
+│   ├── components/             # ML pipeline components
+│   │   ├── data_ingestion.py   # Loads dataset & splits train/test
+│   │   ├── data_transformation.py # Preprocessing & feature engineering
+│   │   └── model_trainer.py    # Model training & evaluation
+│   │
+│   ├── pipeline/
+│   │   ├── train_pipeline.py   # High-level training pipeline
+│   │   └── predict_pipeline.py # Final prediction pipeline
+│   │
+│   ├── exception.py            # Custom exception handling
+│   ├── logger.py               # Logging utility
+│   └── utils.py                # Helper functions (save/load models)
+│
+├── templates/                  # Flask HTML templates
+│   └── index.html
+│
+└── static/css/                 # CSS for UI
+    └── style.css
+```
 
-# Approach for the project 
+## 🧩 Pipeline Workflow
 
-1. Data Ingestion : 
-    * In Data Ingestion phase the data is first read as csv. 
-    * Then the data is split into training and testing and saved as csv file.
+1. **Data Ingestion** (''data_ingestion.py'')
+   • Reads dataset (gemstone.csv)
+   • Splits into train/test sets
+   • Stores CSVs in artifacts/
 
-2. Data Transformation : 
-    * In this phase a ColumnTransformer Pipeline is created.
-    * for Numeric Variables first SimpleImputer is applied with strategy median , then Standard Scaling is performed on numeric data.
-    * for Categorical Variables SimpleImputer is applied with most frequent strategy, then ordinal encoding performed , after this data is scaled with Standard Scaler.
-    * This preprocessor is saved as pickle file.
+2. **Data Transformation** (''data_transformation.py'')
+   • Handles missing values
+   • Encodes categorical variables (cut, color, clarity)
+   • Scales numerical features (carat, depth, table, etc.)
+   • Saves preprocessing object as preprocessor.pkl
 
-3. Model Training : 
-    * In this phase base model is tested . The best model found was catboost regressor.
-    * After this hyperparameter tuning is performed on catboost and knn model.
-    * A final VotingRegressor is created which will combine prediction of catboost, xgboost and knn models.
-    * This model is saved as pickle file.
+3. **Model Training** ("model_trainer.py")
+   • Trains multiple regression models
+   • Uses GridSearchCV/RandomizedSearchCV for hyperparameter tuning
+   • Saves best model as model.pkl
 
-4. Prediction Pipeline : 
-    * This pipeline converts given data into dataframe and has various functions to load pickle files and predict the final results in python.
+4. **Training Pipeline** (train_pipeline.py)
+   • Orchestrates full pipeline (ingestion → transformation → training)
 
-5. Flask App creation : 
-    * Flask app is created with User Interface to predict the gemstone prices inside a Web Application.
+5. **Prediction Pipeline** (predict_pipeline.py)
+   • Loads model.pkl & preprocessor.pkl
+   • Accepts user input → preprocess → predict gemstone price
 
-# Exploratory Data Analysis Notebook
+6. **Flask Application** (application.py)
+   • Web form for user input
+   • Displays predicted gemstone price in real-time
 
-Link : [EDA Notebook](./notebook/1_EDA_Gemstone_price.ipynb)
+7. **Utilities**
+   • logger.py : Structured logging
+   • exception.py : Custom error handling
+   • utils.py : Model saving/loading, evaluation functions
 
-# Model Training Approach Notebook
-
-Link : [Model Training Notebook](./notebook/2_Model_Training_Gemstone.ipynb)
-
-# Model Interpretation with LIME 
-
-Link : [LIME Interpretation](./notebook/3_Explainability_with_LIME.ipynb)
